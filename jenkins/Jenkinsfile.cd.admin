@@ -4,10 +4,10 @@ pipeline {
     string(name: 'IMAGE_TAG', defaultValue: 'latest', description: 'Image tag to deploy')
   }
   environment {
-    REGISTRY = "your.registry.example.com/shopnow"
+    REGISTRY = "975050024946.dkr.ecr.eu-central-1.amazonaws.com/vijay-shopnow/"
     KUBECONFIG_FILE = 'kubeconfig-credential'
     RELEASE_NAME = 'shopnow-admin'
-    NAMESPACE = 'shopnow-demo'
+    NAMESPACE = 'vijay'
     CHART_PATH = 'charts/admin'
   }
   stages {

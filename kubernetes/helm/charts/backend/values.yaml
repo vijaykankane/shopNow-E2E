@@ -16,7 +16,7 @@ config:
 
 secret:
   enabled: true
-  MONGODB_URI: mongodb://shopuser:ShopNowPass123@mongo-0.mongo-headless.shopnow-demo.svc.cluster.local:27017/shopnow?authSource=admin
+  MONGODB_URI: mongodb://shopuser:ShopNowPass123@mongo-0.mongo-headless.vijay.svc.cluster.local:27017/shopnow?authSource=admin
 
 resources:
   requests:
