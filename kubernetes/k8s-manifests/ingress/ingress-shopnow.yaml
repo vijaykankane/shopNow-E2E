@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: shopnow-ingress
-  namespace: shopnow-demo
+  namespace: vijay
   annotations:
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
@@ -10,14 +10,14 @@ spec:
   rules:
   - http:
       paths:
-      - path: /aryan-admin
+      - path: /vijay-admin
         pathType: Prefix
         backend:
           service:
             name: admin
             port:
               number: 80
-      - path: /aryan
+      - path: /vijay
         pathType: Prefix
         backend:
           service:

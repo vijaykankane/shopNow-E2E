@@ -11,7 +11,7 @@ service:
 
 stateful:
   volume:
-    storageClassName: gp3-ssd
+    storageClassName: ebs-sc-demo-vijay
     storage: 5Gi
 
 resources:

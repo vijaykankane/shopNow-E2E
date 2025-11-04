@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: admin-nginx-conf
-  namespace: shopnow-demo
+  namespace: vijay
 data:
   default.conf: |
     server {
@@ -11,8 +11,8 @@ data:
       root /usr/share/nginx/html;
       index index.html;
 
-      # Admin API - proxy to backend for aryan-admin (general catch-all)
-      location /aryan-admin/api/ {
+      # Admin API - proxy to backend for vijay-admin (general catch-all)
+      location /vijay-admin/api/ {
         proxy_pass http://backend:5000/api/;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
@@ -21,21 +21,21 @@ data:
         proxy_read_timeout 90;
       }
       
-      # Handle static assets within /aryan-admin/static/ - map to /static/
-      location /aryan-admin/static/ {
+      # Handle static assets within /vijay-admin/static/ - map to /static/
+      location /vijay-admin/static/ {
         alias /usr/share/nginx/html/static/;
         expires 30d;
         add_header Cache-Control "public, immutable";
       }
       
-      # Handle other static assets (favicon, etc.) within /aryan-admin/
-      location ~ ^/aryan-admin/(.*\.(css|js|map|svg|gif|png|jpg|jpeg|ico|woff2?|ttf|eot))$ {
+      # Handle other static assets (favicon, etc.) within /vijay-admin/
+      location ~ ^/vijay-admin/(.*\.(css|js|map|svg|gif|png|jpg|jpeg|ico|woff2?|ttf|eot))$ {
         alias /usr/share/nginx/html/$1;
         expires 30d;
         add_header Cache-Control "public, immutable";
       }
       
-      # Handle /aryan-admin path - serve the React app
+      # Handle /vijay-admin path - serve the React app
       # This catches all paths and serves index.html for SPA routing
       location / {
         try_files $uri $uri/ /index.html;

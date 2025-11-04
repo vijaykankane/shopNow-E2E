@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mongo
-  namespace: shopnow-demo
+  namespace: vijay
   labels:
     app: mongo
 spec:
@@ -46,7 +46,7 @@ spec:
       name: mongo-pvc
     spec:
       accessModes: ["ReadWriteOnce"]
-      storageClassName: gp3-ssd
+      storageClassName: ebs-sc-demo-vijay
       resources:
         requests:
           storage: 5Gi

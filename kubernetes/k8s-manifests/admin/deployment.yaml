@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: admin
-  namespace: shopnow-demo
+  namespace: vijay
   labels:
     app: admin
 spec:
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: admin
-        image: 975050024946.dkr.ecr.ap-southeast-1.amazonaws.com/shopnow/admin:latest #<account-id>.dkr.ecr.<region>.amazonaws.com/shopnow/admin:latest
+        image: 975050024946.dkr.ecr.eu-central-1.amazonaws.com/shopnow-vijay/admin:latest #975050024946.dkr.ecr.ap-southeast-1.amazonaws.com/shopnow/admin:latest #<account-id>.dkr.ecr.<region>.amazonaws.com/shopnow/admin:latest
         ports:
         - containerPort: 80
         resources:

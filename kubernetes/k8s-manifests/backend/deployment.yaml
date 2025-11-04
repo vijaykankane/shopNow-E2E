@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
-  namespace: shopnow-demo
+  namespace: vijay
   labels:
     app: backend
 spec:
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: 975050024946.dkr.ecr.ap-southeast-1.amazonaws.com/shopnow/backend:latest ##<account-id>.dkr.ecr.<region>.amazonaws.com/shopnow/backend:latest
+        image: 975050024946.dkr.ecr.eu-central-1.amazonaws.com/shopnow-vijay/backend:latest ##<account-id>.dkr.ecr.<region>.amazonaws.com/shopnow/backend:latest
         ports:
         - containerPort: 5000
         envFrom:

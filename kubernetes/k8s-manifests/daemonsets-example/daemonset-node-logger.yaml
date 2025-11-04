@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: node-logger
-  namespace: shopnow-demo
+  namespace: vijay
 spec:
   selector:
     matchLabels:

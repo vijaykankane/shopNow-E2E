@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: frontend-nginx-conf
-  namespace: shopnow-demo
+  namespace: vijay
 data:
   default.conf: |
     server {
@@ -11,8 +11,8 @@ data:
       root /usr/share/nginx/html;
       index index.html;
       
-      # Frontend API - proxy to backend for aryan
-      location /aryan/api/ {
+      # Frontend API - proxy to backend for vijay
+      location /vijay/api/ {
         proxy_pass http://backend:5000/api/;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
@@ -21,21 +21,21 @@ data:
         proxy_read_timeout 90;
       }
       
-      # Handle static assets within /aryan/static/ - map to /static/
-      location /aryan/static/ {
+      # Handle static assets within /vijay/static/ - map to /static/
+      location /vijay/static/ {
         alias /usr/share/nginx/html/static/;
         expires 30d;
         add_header Cache-Control "public, immutable";
       }
       
-      # Handle other static assets (favicon, etc.) within /aryan/
-      location ~ ^/aryan/(.*\.(css|js|map|svg|gif|png|jpg|jpeg|ico|woff2?|ttf|eot))$ {
+      # Handle other static assets (favicon, etc.) within /vijay/
+      location ~ ^/vijay/(.*\.(css|js|map|svg|gif|png|jpg|jpeg|ico|woff2?|ttf|eot))$ {
         alias /usr/share/nginx/html/$1;
         expires 30d;
         add_header Cache-Control "public, immutable";
       }
       
-      # Handle /aryan path - serve the React app
+      # Handle /vijay path - serve the React app
       # This catches all paths and serves index.html for SPA routing
       location / {
         try_files $uri $uri/ /index.html;
