@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: 975050024946.dkr.ecr.eu-central-1.amazonaws.com/shopnow-vijay/backend
+  repository: 975050024946.dkr.ecr.eu-central-1.amazonaws.com/vijay-shopnow/backend
   tag: latest
   pullPolicy: IfNotPresent
 

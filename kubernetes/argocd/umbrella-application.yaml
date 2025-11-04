@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: shopnow-umbrella
+  name: shopnow-vijay-umbrella
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/aryanm12/shopNow'
+    repoURL: 'https://github.com/vijaykankane/shopNow-E2E'
     targetRevision: HEAD
     path: kubernetes/argocd/apps
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: argocd
+    namespace: vijay
   syncPolicy:
     automated:
-      prune: false
-      selfHeal: false
+      prune: true
+      selfHeal: true
