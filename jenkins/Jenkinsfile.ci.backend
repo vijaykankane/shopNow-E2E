@@ -21,7 +21,7 @@ pipeline {
             sh '''
              // echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin your.registry.example.com
               aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 975050024946.dkr.ecr.eu-central-1.amazonaws.com
-	      docker build -t ${REGISTRY}-backend:${IMAGE_TAG} .
+      	      docker build -t ${REGISTRY}-backend:${IMAGE_TAG} .
               docker push ${REGISTRY}-backend:${IMAGE_TAG}
             '''
           }
