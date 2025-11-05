@@ -6,7 +6,7 @@ pipeline {
   environment {
     REGISTRY = "975050024946.dkr.ecr.eu-central-1.amazonaws.com/vijay-shopnow/"
     KUBECONFIG_FILE = 'kubeconfig-credential'
-    RELEASE_NAME = 'vijay-shopnow'
+    RELEASE_NAME = 'vijay-shopnow-admin'
     NAMESPACE = 'vijay'
     CHART_PATH = 'kubernetes/helm/charts/admin'
   }
@@ -20,7 +20,7 @@ pipeline {
               --set image.repository=${REGISTRY}-admin \
               --set image.tag=${IMAGE_TAG} \
               --wait --timeout 5m
-            kubectl rollout status deployment/${RELEASE_NAME}-admin -n ${NAMESPACE} --timeout=3m
+            kubectl rollout status deployment/${RELEASE_NAME} -n ${NAMESPACE} --timeout=3m
           '''
         
       }
