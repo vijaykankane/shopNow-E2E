@@ -1,9 +1,9 @@
 pipeline {
   agent any
   environment {
-    REGISTRY = "your.registry.example.com/shopnow"
+    REGISTRY = "975050024946.dkr.ecr.eu-central-1.amazonaws.com/vijay-shopnow"
     DOCKER_CREDENTIALS = 'docker-reg-cred'
-    IMAGE_TAG = ''
+    IMAGE_TAG = 'latest'
   }
   stages {
     stage('Checkout') { steps { checkout scm } }
@@ -16,10 +16,11 @@ pipeline {
     stage('Build & Push') {
       steps {
         dir('backend') {
-          withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS, usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+         // withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS, usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
             sh '''
-              echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin your.registry.example.com
-              docker build -t ${REGISTRY}-backend:${IMAGE_TAG} .
+             // echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin your.registry.example.com
+              aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 975050024946.dkr.ecr.eu-central-1.amazonaws.com
+	      docker build -t ${REGISTRY}-backend:${IMAGE_TAG} .
               docker push ${REGISTRY}-backend:${IMAGE_TAG}
             '''
           }
