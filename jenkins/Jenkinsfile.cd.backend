@@ -14,9 +14,8 @@ pipeline {
     stage('Checkout') { steps { checkout scm } }
     stage('Deploy') {
       steps {
-        {
+        
           sh '''
-       
             helm upgrade --install ${RELEASE_NAME} ${CHART_PATH} \
               --namespace ${NAMESPACE} --create-namespace \
               --set image.repository=${REGISTRY}/backend \
@@ -24,7 +23,7 @@ pipeline {
               --wait --timeout 5m
             kubectl rollout status deployment/${RELEASE_NAME}-backend -n ${NAMESPACE} --timeout=3m
           '''
-        }
+        
       }
     }
   }
