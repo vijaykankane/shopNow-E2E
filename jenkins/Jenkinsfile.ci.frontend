@@ -3,7 +3,7 @@ pipeline {
   environment {
     REGISTRY = "975050024946.dkr.ecr.eu-central-1.amazonaws.com/vijay-shopnow"
     DOCKER_CREDENTIALS = 'docker-reg-cred'    // Jenkins username/password credential id
-    IMAGE_TAG = 'latest'
+    IMAGE_TAG = 'v1.0.0'
   }
   stages {
     stage('Checkout') {
