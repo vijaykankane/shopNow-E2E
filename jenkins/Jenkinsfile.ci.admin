@@ -24,7 +24,7 @@ pipeline {
           }
         }
       }
-    }
+    
     stage('Publish Tag') {
       steps {
         writeFile file: 'image-tag.txt', text: "${IMAGE_TAG}"
