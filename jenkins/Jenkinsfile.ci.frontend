@@ -47,7 +47,7 @@ pipeline {
         script {
           // Replace 'job/shopnow-frontend-cd' with your actual Jenkins CD job path
           def cdJob = 'CD-Frontend'
-          build job: cdJob, parameters: [string(name: 'IMAGE_TAG', value: IMAGE_TAG)], wait: false
+          build job: cdJob, parameters: [string(name: 'IMAGE_TAG', value: "${IMAGE_TAG}")], wait: false
         }
       }
     }
