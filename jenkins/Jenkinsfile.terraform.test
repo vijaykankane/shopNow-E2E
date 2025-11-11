@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
     environment {
@@ -20,7 +21,11 @@ pipeline {
         stage('Terraform Plan') {
             steps {
                 dir('terraform') {
-                    sh 'terraform plan -var-file=dev.tfvars'
+
+                    
+                   withCredentials([file(credentialsId: 'terraform-tfvars', variable: 'TFVARS_FILE')]) {
+                         sh 'terraform plan -var-file=$TFVARS_FILE'
+                                }
                 }
             }
         }
@@ -37,3 +42,4 @@ pipeline {
             cleanWs()
         }
     }
+}
