@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+    environment {
+        AWS_REGION = 'eu-central-1'
+        TF_VAR_cluster_name = 'capstone-cluster'
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/vijaykankane/shopNow-E2E.git'
+            }
+        }
+        stage('Terraform Init') {
+            steps {
+                dir('terraform') {
+                    sh 'terraform init'
+                }
+            }
+        }
+        stage('Terraform Plan') {
+            steps {
+                dir('terraform') {
+                    sh 'terraform plan -var-file=dev.tfvars'
+                }
+            }
+        }
+        stage('Terraform Apply') {
+            steps {
+                dir('terraform') {
+                    sh 'terraform apply -auto-approve -var-file="dev.tfvars"'
+                }
+            }
+        }
+    }
+    post {
+        always {
+            cleanWs()
+        }
+    }
