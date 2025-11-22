@@ -1,0 +1,11 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ebs-sc-demo-vijay
+provisioner: ebs.csi.aws.com # Specifies the volume plugin to use (in this case, the AWS EBS CSI driver)
+parameters:
+  type: gp3 # Specific to the provisioner (here, we're specifying gp3 volume type and encryption)
+  encrypted: "true"
+volumeBindingMode: WaitForFirstConsumer #  delay the binding and provisioning of a PersistentVolume until a Pod using the PersistentVolumeClaim is created
+allowVolumeExpansion: true
+
